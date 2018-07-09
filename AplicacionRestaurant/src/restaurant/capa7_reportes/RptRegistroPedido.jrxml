@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="800" pageHeight="700" columnWidth="760" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="mesacodigo" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select cli.clientenombre,mo.usuarionombre,p.pedidofecha,me.mesanumero,pr.productonombre,li.lineapedidocantidad,li.lineapedidoprecio,sum(li.lineapedidocantidad*li.lineapedidoprecio) as total from pedido p inner join usuario mo on p.pedidocodigo=mo.usuariocodigo 
+inner join mesa me on me.mesacodigo=p.mesacodigo
+inner join cliente cli on cli.clientecodigo=p.clientecodigo 
+inner join lineapedido li on p.pedidocodigo=li.pedidocodigo
+inner join producto pr on pr.productocodigo=li.productocodigo
+where p.pedidocodigo=li.pedidocodigo and me.mesacodigo=$P{mesacodigo}
+group by (cli.clientenombre,mo.usuarionombre,p.pedidofecha,me.mesanumero,pr.productonombre,li.lineapedidocantidad,li.lineapedidoprecio)]]>
+	</queryString>
+	<field name="clientenombre" class="java.lang.String"/>
+	<field name="usuarionombre" class="java.lang.String"/>
+	<field name="pedidofecha" class="java.sql.Date"/>
+	<field name="mesanumero" class="java.lang.Integer"/>
+	<field name="productonombre" class="java.lang.String"/>
+	<field name="lineapedidocantidad" class="java.lang.Integer"/>
+	<field name="lineapedidoprecio" class="java.math.BigDecimal"/>
+	<field name="total" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="218" splitType="Stretch">
+			<staticText>
+				<reportElement x="525" y="12" width="130" height="20" forecolor="#FF0000"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha Pedido:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="525" y="52" width="130" height="20" forecolor="#4589FF"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{pedidofecha}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="214" y="32" width="141" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[974265233-926557678]]></text>
+			</staticText>
+			<image>
+				<reportElement x="175" y="55" width="37" height="34"/>
+				<imageExpression class="java.lang.String"><![CDATA["C:\\Users\\ASUS\\Documents\\NetBeansProjects\\Proyecto en Netbeans\\AplicacionRestaurant\\src\\restaurant\\capa5_imagenes\\logingmail.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="16" y="112" width="138" height="20" forecolor="#448AFF"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[© Derechos reservados ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="50" y="152" width="71" height="20" forecolor="#448AFF"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Versión 1.0]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="213" y="92" width="100" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[www.fivecod.com]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="214" y="62" width="141" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[fivecods@gmail.com]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="175" y="5" width="178" height="24" forecolor="#448AFF"/>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FiveCod Software]]></text>
+			</staticText>
+			<image>
+				<reportElement x="4" y="5" width="161" height="112"/>
+				<imageExpression class="java.lang.String"><![CDATA["C:\\Users\\ASUS\\Documents\\NetBeansProjects\\Proyecto en Netbeans\\AplicacionRestaurant\\src\\restaurant\\capa5_imagenes\\sistea.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="175" y="89" width="37" height="28"/>
+				<imageExpression class="java.lang.String"><![CDATA["C:\\Users\\ASUS\\Documents\\NetBeansProjects\\Proyecto en Netbeans\\AplicacionRestaurant\\src\\restaurant\\capa5_imagenes\\logingoogle.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="175" y="29" width="37" height="26"/>
+				<imageExpression class="java.lang.String"><![CDATA["C:\\Users\\ASUS\\Documents\\NetBeansProjects\\Proyecto en Netbeans\\AplicacionRestaurant\\src\\restaurant\\capa5_imagenes\\logintelefono.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="34" y="132" width="104" height="20" forecolor="#448AFF"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FiveCod Software 2018]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="249" y="132" width="206" height="30" forecolor="#448AFF"/>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Lista de Pedido Cliente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="4" y="185" width="117" height="20" forecolor="#000000"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Atedndido Por:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="138" y="185" width="140" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{usuarionombre}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="70" splitType="Stretch">
+			<rectangle>
+				<reportElement mode="Opaque" x="-21" y="0" width="801" height="70" forecolor="#448AFF" backcolor="#448AFF"/>
+			</rectangle>
+			<staticText>
+				<reportElement mode="Transparent" x="-10" y="17" width="105" height="28" forecolor="#FFFFFF"/>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cliente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="127" y="17" width="105" height="28" forecolor="#FFFFFF"/>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Producto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="261" y="17" width="82" height="28" forecolor="#FFFFFF"/>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N° Mesa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="397" y="17" width="105" height="28" forecolor="#FFFFFF"/>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cantidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="555" y="17" width="105" height="28" forecolor="#FFFFFF"/>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Precio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="675" y="17" width="85" height="28" forecolor="#FF0000"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="51" splitType="Stretch">
+			<textField>
+				<reportElement x="-10" y="11" width="121" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{clientenombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="127" y="11" width="122" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{productonombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="261" y="11" width="111" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{mesanumero}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="397" y="11" width="147" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{lineapedidocantidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="555" y="11" width="105" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{lineapedidoprecio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="675" y="11" width="85" height="20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
