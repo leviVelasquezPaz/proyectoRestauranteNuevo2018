@@ -10,7 +10,7 @@ package restaurant.capa3_dominio;
  * @author Antonio AB
  */
 public class Cliente {
-
+//clientesdsad
     private int clienteCodigo;
     private String clientePaterno;
     private String clienteMaterno;
